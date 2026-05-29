@@ -16,12 +16,13 @@ Der Stack entspricht dem, was in kleinen und mittleren Unternehmen produktiv ein
 
 |Gerät            |Modell                    |Zweck                          |
 |-----------------|--------------------------|-------------------------------|
-|Homelab-Server   |[z.B. eigener Build / NUC]|Virtualisierung (Proxmox)      |
+|Homelab-Server   |LENOVO ThinkCentre M720q  |Virtualisierung (Proxmox)      |
 |NAS              |Synology DS923+           |Storage, Backup, Dateiablage   |
 |Router / Firewall|UniFi Dream Machine SE    |Routing, Firewall, VPN, IDS/IPS|
 |Switch           |UniFi Switch Pro 24 PoE   |Managed Switching, PoE für APs |
 |Access Points    |6x UniFi AP               |Enterprise WLAN-Infrastruktur  |
 
+sowie ARRIS Router für Vodafone Netzzugang und UPS von Legrand
 -----
 
 ## 🏗️ Netzwerk-Architektur
@@ -48,7 +49,7 @@ Internet
              └── Backup-Ziel für VMs
 ```
 
-> 💡 Tipp: Ersetze dies durch einen Screenshot aus draw.io oder einem handgezeichneten Scan
+
 
 -----
 
@@ -184,12 +185,10 @@ Grafana-Dashboard überwacht:
 - [x] NAS mit Backup-Strategie konfiguriert
 - [ ] Automatisierung mit Ansible
 - [ ] Kubernetes/k3s ausprobieren
-- [ ] Offsite-Backup einrichten
+- [x] Offsite-Backup einrichten
 
 -----
 
 ## 📬 Kontakt
 
 **Michael Glorius**  
-[LinkedIn-Profil einfügen]  
-[E-Mail optional]
