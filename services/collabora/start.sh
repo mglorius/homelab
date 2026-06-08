@@ -1,9 +1,12 @@
 #!/bin/bash
-# Passwort aus .env laden
+# Collabora CODE - Start Script
+# Nextcloud VM (192.168.60.9) | nc.michaelglorius.de
+# Passwort wird aus .env geladen (nicht im Repo)
+
 source "$(dirname "$0")/.env"
 
-docker stop NEXTCLOUDOFFICE 2>/dev/null
-docker rm NEXTCLOUDOFFICE 2>/dev/null
+docker stop NEXTCLOUDOFFICE 2>/dev/null && echo "Container gestoppt."
+docker rm NEXTCLOUDOFFICE 2>/dev/null && echo "Container entfernt."
 
 docker run -t -d \
   -p 192.168.60.9:9980:9980 \
@@ -22,3 +25,8 @@ docker run -t -d \
   --volume "/usr/share/fonts/truetype/:/opt/collaboraoffice/share/fonts/truetype/local/:ro" \
   --restart always \
   collabora/code
+
+echo ""
+echo "Warte 10 Sekunden auf Start..."
+sleep 10
+docker ps | grep collabora
