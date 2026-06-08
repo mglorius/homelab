@@ -1,9 +1,6 @@
 #!/bin/bash
 # Collabora CODE - Start Script
 # Nextcloud VM (192.168.60.9) | nc.michaelglorius.de
-# Passwort wird aus .env geladen (nicht im Repo)
-
-source "$(dirname "$0")/.env"
 
 docker stop NEXTCLOUDOFFICE 2>/dev/null && echo "Container gestoppt."
 docker rm NEXTCLOUDOFFICE 2>/dev/null && echo "Container entfernt."
@@ -12,8 +9,8 @@ docker run -t -d \
   -p 192.168.60.9:9980:9980 \
   -e "aliasgroup1=https://nc.michaelglorius.de:443,https://nc\\.michaelglorius\\.de:443" \
   -e "server_name=nc.michaelglorius.de" \
-  -e "username=${COLLABORA_USER}" \
-  -e "password=${COLLABORA_PASSWORD}" \
+  -e "username=mglorius" \
+  -e "password=REMOVED" \
   --name NEXTCLOUDOFFICE \
   --memory="4G" \
   --memory-swap="4G" \
