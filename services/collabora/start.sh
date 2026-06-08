@@ -1,16 +1,16 @@
 #!/bin/bash
-# Collabora CODE - Start Script
-# Nextcloud VM (192.168.60.9) | nc.michaelglorius.de
+# Passwort aus .env laden
+source "$(dirname "$0")/.env"
 
-docker stop NEXTCLOUDOFFICE 2>/dev/null && echo "Container gestoppt."
-docker rm NEXTCLOUDOFFICE 2>/dev/null && echo "Container entfernt."
+docker stop NEXTCLOUDOFFICE 2>/dev/null
+docker rm NEXTCLOUDOFFICE 2>/dev/null
 
 docker run -t -d \
   -p 192.168.60.9:9980:9980 \
   -e "aliasgroup1=https://nc.michaelglorius.de:443,https://nc\\.michaelglorius\\.de:443" \
   -e "server_name=nc.michaelglorius.de" \
-  -e "username=mglorius" \
-  -e "password=REMOVED" \
+  -e "username=${COLLABORA_USER}" \
+  -e "password=${COLLABORA_PASSWORD}" \
   --name NEXTCLOUDOFFICE \
   --memory="4G" \
   --memory-swap="4G" \
@@ -22,8 +22,3 @@ docker run -t -d \
   --volume "/usr/share/fonts/truetype/:/opt/collaboraoffice/share/fonts/truetype/local/:ro" \
   --restart always \
   collabora/code
-
-echo ""
-echo "Warte 10 Sekunden auf Start..."
-sleep 10
-docker ps | grep collabora
